@@ -1,10 +1,11 @@
 import { mount } from 'enzyme';
-import App from './App';
+import Input from './input';
 
-describe('App tests unit', () => {
+describe('Input tests', () => {
   let wrapper;
+
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(<Input />);
   });
   afterEach(() => {
     wrapper.unmount();
@@ -13,7 +14,7 @@ describe('App tests unit', () => {
   test('snapshot test', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  test('render App title', () => {
-    expect(wrapper.find('h1').text()).toEqual('Todo list');
+  test('render input', () => {
+    expect(wrapper.find('input')).toHaveLength(1);
   });
 });
