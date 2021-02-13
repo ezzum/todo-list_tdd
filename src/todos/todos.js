@@ -1,15 +1,13 @@
-export default function Todos() {
-  return (
-    <ul className="todos">
-      <li className="todos-item">
-        1<button>delete</button>
+import React from "react";
+
+export default function Todos({ todos, deleteTodo }) {
+  const todoList = todos.map((item) => {
+    return (
+      <li key={item} className={"todos-item"}>
+        {item}
+        <button onClick={() => deleteTodo()}>delete</button>
       </li>
-      <li className="todos-item">
-        2<button>delete</button>
-      </li>
-      <li className="todos-item">
-        3<button>delete</button>
-      </li>
-    </ul>
-  );
+    );
+  });
+  return <ul className="todos">{todoList}</ul>;
 }

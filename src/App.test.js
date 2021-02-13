@@ -1,7 +1,9 @@
-import { mount } from 'enzyme';
-import App from './App';
+import { mount } from "enzyme";
+import App from "./App";
 
-describe('App tests unit', () => {
+jest.mock("./todos/todos", () => "div");
+
+describe("App tests unit", () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(<App />);
@@ -10,10 +12,10 @@ describe('App tests unit', () => {
     wrapper.unmount();
   });
 
-  test('snapshot test', () => {
+  test("snapshot test", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  test('render App title', () => {
-    expect(wrapper.find('h1').text()).toEqual('Todo list');
+  test("render App title", () => {
+    expect(wrapper.find("h1").text()).toEqual("Todo list");
   });
 });
