@@ -1,5 +1,5 @@
 import { mount } from "enzyme";
-import Todos from "./todos";
+import Todos from "../todos";
 import React from "react";
 
 describe("Todos tests", () => {

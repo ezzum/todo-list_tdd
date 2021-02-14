@@ -1,5 +1,5 @@
 import { mount } from "enzyme";
-import Input from "./input";
+import Input from "../input";
 import React from "react";
 
 describe("Input tests", () => {

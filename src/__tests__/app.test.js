@@ -1,7 +1,7 @@
 import { mount } from "enzyme";
-import App from "./App";
+import App from "../app";
 
-jest.mock("./todos/todos", () => "div");
+jest.mock("../todos/todos", () => "div");
 
 describe("App tests unit", () => {
   let wrapper;

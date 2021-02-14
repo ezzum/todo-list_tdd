@@ -1,18 +1,23 @@
-import "./App.css";
+import React, { useState } from "react";
+
+import "./app.css";
 import Input from "./input/input";
 import Todos from "./todos/todos";
 import AddButton from "./add-button/add-button";
-import React from "react";
 
 function App() {
+  const [todos, setTodos] = useState(["TDD", "SSR", "TypeScript"]);
+  const newTodo = () => {
+    console.log("new Todo!");
+  };
   return (
     <div className="App">
       <h1 className="title">Todo list</h1>
       <div>
-        <Input />
+        <Input newTodo={newTodo} />
         <AddButton />
       </div>
-      <Todos />
+      <Todos todos={todos} />
     </div>
   );
 }

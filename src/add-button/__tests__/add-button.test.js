@@ -1,7 +1,7 @@
 import { mount } from "enzyme";
 import React from "react";
 
-import AddButton from "./add-button";
+import AddButton from "../add-button";
 
 describe("AddButton test", () => {
   let wrapper;
