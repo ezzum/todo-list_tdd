@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Input({ newTodo }) {
-  return <input type="text" onChange={() => newTodo()} />;
+export default function Input({ newTodo, value }) {
+  return (
+    <input value={value} type="text" onChange={(event) => newTodo(event)} />
+  );
 }

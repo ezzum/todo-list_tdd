@@ -2,7 +2,7 @@ import { mount } from "enzyme";
 import App from "../app";
 
 describe("App integrative test", () => {
-  let wrapper;
+  let wrapper, todos;
   beforeEach(() => {
     wrapper = mount(<App />);
   });
@@ -21,7 +21,8 @@ describe("App integrative test", () => {
     expect(wrapper.find("Todos")).toHaveLength(1);
   });
   test("render todos items", () => {
-    const todos = wrapper.find("Todos").props().todos;
+    todos = wrapper.find("Todos").props().todos;
+
     expect(wrapper.find(".todos-item")).toHaveLength(todos.length);
     todos.forEach((item, index) => {
       expect(wrapper.find(".todos-item").at(index).childAt(0).text()).toEqual(
@@ -31,5 +32,33 @@ describe("App integrative test", () => {
   });
   test("render delete button", () => {
     expect(wrapper.find(".todos-item").first().find("button")).toHaveLength(1);
+  });
+  test("Input handler", () => {
+    const text = "input change";
+
+    wrapper
+      .find("Input")
+      .childAt(0)
+      .simulate("change", { target: { value: text } });
+
+    expect(wrapper.find("Input").props().value).toEqual(text);
+  });
+  test("AddButton handler", () => {
+    wrapper
+      .find("input")
+      .simulate("change", { target: { value: "NPM publish" } });
+    wrapper.find(".add").simulate("click");
+
+    const newTodos = wrapper.find("Todos").props().todos;
+
+    expect(newTodos.length === todos.length + 1).toBe(true);
+    expect(wrapper.find("Input").props().value).toBe("");
+  });
+  test("todo delete handler", () => {
+    wrapper.find(".delete").first().simulate("click");
+
+    const newTodos = wrapper.find("Todos").props().todos;
+
+    expect(newTodos.length === todos.length - 1).toBe(true);
   });
 });

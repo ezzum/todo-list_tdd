@@ -5,7 +5,9 @@ export default function Todos({ todos, deleteTodo }) {
     return (
       <li key={item} className={"todos-item"}>
         {item}
-        <button onClick={() => deleteTodo()}>delete</button>
+        <button className={"delete"} onClick={() => deleteTodo(item)}>
+          delete
+        </button>
       </li>
     );
   });

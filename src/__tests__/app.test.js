@@ -1,8 +1,6 @@
 import { mount } from "enzyme";
 import App from "../app";
 
-jest.mock("../todos/todos", () => "div");
-
 describe("App tests unit", () => {
   let wrapper;
   beforeEach(() => {
